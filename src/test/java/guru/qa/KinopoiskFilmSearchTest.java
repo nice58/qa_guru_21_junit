@@ -31,7 +31,7 @@ public class KinopoiskFilmSearchTest extends BaseTest {
     @DisplayName("Проверка поиска в kinopoisk.ru с помощью @MethodSource")
     @ParameterizedTest(name = "После поиска {0} открылась страница с информацией о фильме {0}")
     @MethodSource("searchFilmString")
-    public void successfulSearch(String searchFilmString) {
+    public void searchFilmsWithCsvSource(String searchFilmString) {
         $("[type='text']").setValue(searchFilmString);
         $(".styles_mainLink__A4Xkh").click();
         $(".styles_header__mzj3d").shouldHave(text(searchFilmString));

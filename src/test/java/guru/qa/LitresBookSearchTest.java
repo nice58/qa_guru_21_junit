@@ -20,7 +20,7 @@ public class LitresBookSearchTest extends BaseTest {
 
     @DisplayName("Проверка поиска на сайте litres.ru с помощью @CsvFileSource")
     @ParameterizedTest(name = "При поиске {0} в результатах отображается текст {1}")
-    void searchBestFilmsWithCsvSource(String bookStyle, String info) {
+    void searchBooksWithCsvFileSource(String bookStyle, String info) {
         $("[data-test-id='header__search-input--desktop']").setValue(bookStyle).pressEnter();
         $("[data-test-id='search-title__wrapper']").shouldHave(text(info));
     }

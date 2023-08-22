@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GismeteoWeatherSearchTest extends BaseTest {
@@ -22,8 +23,9 @@ public class GismeteoWeatherSearchTest extends BaseTest {
 
     @DisplayName("Проверка поиска на сайте gismeteo.ru с помощью @CsvSource")
     @ParameterizedTest(name = "При поиске {0} в результатах отображается текст {1}")
-    void searchBestFilmsWithCsvSource(String cityName, String info) {
-        $("[type='search']").setValue(cityName).pressEnter();
+    void searchWeatherCsvSource(String cityName, String info) {
+        $("[type='search']").setValue(cityName);
+        $(".found").$(byText(cityName)).click();
         $(".page-title").shouldHave(text(info));
     }
 }
